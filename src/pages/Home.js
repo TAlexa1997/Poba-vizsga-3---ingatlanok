@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import IngatlanTable from "../components/IngatlanTable";
+import IngatlanTable from "../components/Ingatlan";
 import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import IngatlanForm from "../components/IngatlanForm";
 
 export default function Home() {
   const [ingatlanok, setIngatlanok] = useState([]);
+  const [ingatlanok2, setIngatlanok2] = useState([]);
 
   async function fetchIngatlanok() {
     try {
@@ -13,6 +14,14 @@ export default function Home() {
         "http://localhost:8000/api/kategoriasingatlanok"
       );
       setIngatlanok(response.data);
+    } catch (error) {
+      console.error("Hiba történt az ingatlanok lekérésekor:", error);
+    }
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/kategoriasingatlanok2"
+      );
+      setIngatlanok2(response.data);
     } catch (error) {
       console.error("Hiba történt az ingatlanok lekérésekor:", error);
     }
@@ -29,7 +38,7 @@ export default function Home() {
     >
       <Col>
         <Row xs={12} md={8} className="">
-          <IngatlanTable ingatlanok={ingatlanok} />
+        <IngatlanTable ingatlanok={ingatlanok} ingatlanok2={ingatlanok2} />
         </Row>
       </Col>
       <Col>
