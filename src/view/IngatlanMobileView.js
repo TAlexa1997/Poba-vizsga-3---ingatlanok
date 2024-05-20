@@ -9,20 +9,12 @@ export default function IngatlanMobileView ({ ingatlanok }) {
             <Col key={index} xs={12} md={6}>
               <Card className="mb-4">
                 <Card.Header className="d-flex justify-content-between">
-                  <span>
-                    <strong>{ingatlan.Kategória}</strong>
-                  </span>
-                  <span>
-                    <strong>{ingatlan["Hirdetés dátuma"]}</strong>
-                  </span>
+                  <span><strong>{ingatlan.Kategória}</strong></span>
+                  <span><strong>{ingatlan["Hirdetés dátuma"]}</strong></span>
                 </Card.Header>
                 <Card.Body>
                   <Card.Text>{ingatlan.Leírás}</Card.Text>
-                  <Card.Img
-                    variant="top"
-                    src={ingatlan.Fénykép}
-                    alt="Ingatlan kép"
-                  />
+                  <Card.Img variant="top" src={ingatlan.Fénykép} alt="Ingatlan kép"/>
                   <div className="d-flex justify-content-center">
                     <Button className="text-center p-2 m-2">Megnéz</Button>
                   </div>

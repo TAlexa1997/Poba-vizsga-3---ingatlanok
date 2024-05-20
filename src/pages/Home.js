@@ -8,6 +8,10 @@ export default function Home() {
   const [ingatlanok, setIngatlanok] = useState([]);
   const [ingatlanok2, setIngatlanok2] = useState([]);
 
+  useEffect(() => {
+    fetchIngatlanok();
+  }, []);
+
   async function fetchIngatlanok() {
     try {
       const response = await axios.get(
@@ -26,10 +30,6 @@ export default function Home() {
       console.error("Hiba történt az ingatlanok lekérésekor:", error);
     }
   }
-
-  useEffect(() => {
-    fetchIngatlanok();
-  }, []);
 
   return (
     <Container
